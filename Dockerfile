@@ -1,4 +1,4 @@
-FROM sstarcher/sensu:0.26.5 
+FROM sstarcher/sensu:1.4.3 
 
 # Enable Embedded Ruby
 RUN sed -i -r 's/EMBEDDED_RUBY=false/EMBEDDED_RUBY=true/' /etc/default/sensu
