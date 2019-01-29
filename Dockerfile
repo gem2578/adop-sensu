@@ -1,4 +1,15 @@
-FROM sstarcher/sensu:1.4.3 
+FROM sstarcher/sensu:1.4.3
+
+# Fix Vulnerabilities
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+       curl=7.52.1-5+deb9u8 \
+       libcurl3=7.52.1-5+deb9u8 \
+       libcurl3-gnutls=7.52.1-5+deb9u8 \
+       perl=5.24.1-3+deb9u5 \
+       network-manager=1.6.2-3+deb9u2 \
+       libidn2-0=0.16-1+deb9u1 \
+    && rm -rf /var/lib/apt/lists/*
 
 # Enable Embedded Ruby
 RUN sed -i -r 's/EMBEDDED_RUBY=false/EMBEDDED_RUBY=true/' /etc/default/sensu
